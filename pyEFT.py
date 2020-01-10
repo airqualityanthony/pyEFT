@@ -55,16 +55,15 @@ def Petrol_Euro_1_to_6_NOx_EF(row):
 	print(EF)
 
 ### work on conditional location of row to feed into functon:
+## next step: make variables for input and get function to run based on row back from conditional
 
-a = noxef.loc[0,'Fuel / Size']
-b = 'Diesel <1,4 l'
-c = 'Pre-Euro'
+x = 'Diesel <1,4 l'
+y = 'Pre-Euro'
 
 for i in range(0,len(noxef)):
-	if (noxef.loc[i,'Euro standard'] == c) and ('Diesel' in noxef.loc[i,'Fuel / Size']): 
+	if (noxef.loc[i,'Euro standard'] == y) and ('Diesel' in noxef.loc[i,'Fuel / Size']): 
 		print(i) 
 
-noxef.loc[0,'Fuel / Size']
 
 ## function test
 #Diesel_Pre_Euro_NOx_EF(0)
