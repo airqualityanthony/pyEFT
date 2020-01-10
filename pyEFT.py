@@ -64,17 +64,9 @@ for i in range(0,len(noxef)):
 	if (noxef.loc[i,'Euro standard'] == c) and ('Diesel' in noxef.loc[i,'Fuel / Size']): 
 		print(i) 
 
-print(noxef.index[(noxef.loc[:,'Euro standard'] == c) & ('Diesel' in noxef.loc[:,'Fuel / Size'])])
-
 noxef.loc[0,'Fuel / Size']
-
-print(type(a))
-print(type(b))
 
 ## function test
 #Diesel_Pre_Euro_NOx_EF(0)
 
-
-# for i in Pre_Euro:
-# 	row = i
 
