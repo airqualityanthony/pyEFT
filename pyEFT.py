@@ -54,9 +54,16 @@ def Petrol_Euro_1_to_6_NOx_EF(row):
 	EF = ((noxef.loc[row,'ALPHA'] + noxef.loc[row,'GAMMA'] * AVG_SPEED + noxef.loc[row,'EPSILON'] * AVG_SPEED  ** 2 + noxef.loc[row,'ZITA'] / AVG_SPEED ) / (1 + noxef.loc[row,'BETA'] * AVG_SPEED + noxef.loc[row,'DELTA'] * AVG_SPEED ** 2)) * (1 - noxef.loc[row,'RF'])
 	print(EF)
 
+### work on conditional location of row to feed into functon:
+print(np.where("Diesel" in noxef.loc[:,'Fuel / Size']))
 
+a = noxef.loc[0,'Fuel / Size']
+b = 'Diesel <1,4 l'
 
-#print(np.where("Diesel" in noxef[:,'Fuel / Size']))
+if "Diesel" in a: 
+	print("true")
+
+## function test
 Diesel_Pre_Euro_NOx_EF(0)
 
 
