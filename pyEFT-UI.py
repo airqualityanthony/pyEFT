@@ -198,7 +198,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Emission Factor Toolkit"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Tab 2"))
         self.checkBox_5.setText(_translate("MainWindow", "Breakdown by Vehicle"))
         self.checkBox_7.setText(_translate("MainWindow", "Source Apportionment"))
