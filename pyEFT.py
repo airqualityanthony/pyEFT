@@ -57,13 +57,23 @@ def Petrol_Euro_1_to_6_NOx_EF(row):
 ### work on conditional location of row to feed into functon:
 ## next step: make variables for input and get function to run based on row back from conditional
 
-x = input("Input fuel type: ")
-y = input("Input Euro Standard: ")
+#x = input("Input fuel type: ")
+#y = input("Input Euro Standard: ")
 
 
-for i in range(0,len(noxef)):
-	if (noxef.loc[i,'Euro standard'] == y) and (x in noxef.loc[i,'Fuel / Size']): 
-		Diesel_Pre_Euro_NOx_EF(i) 
+# for i in range(0,len(noxef)):
+# 	if (noxef.loc[i,'Euro standard'] == y) and (x in noxef.loc[i,'Fuel / Size']): 
+# 		Diesel_Pre_Euro_NOx_EF(i) 
 
-
+from PyQt5 import QtWidgets, uic
+ 
+import sys
+ 
+app = QtWidgets.QApplication([])
+ 
+win = uic.loadUi("EFT-UI.ui") #specify the location of your .ui file
+ 
+win.show()
+ 
+sys.exit(app.exec())
 
