@@ -8,6 +8,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import pyEFT
+from pyEFT import EF_functions
 
 
 class Ui_MainWindow(object):
@@ -108,6 +110,8 @@ class Ui_MainWindow(object):
         self.Run_button = QtWidgets.QPushButton(self.groupBox_2)
         self.Run_button.setGeometry(QtCore.QRect(110, 180, 75, 23))
         self.Run_button.setObjectName("Run_button")
+        self.Run_button.clicked.connect(self.clicked)
+
         self.groupBox_3 = QtWidgets.QGroupBox(self.InputData_tab)
         self.groupBox_3.setGeometry(QtCore.QRect(0, 10, 211, 231))
         self.groupBox_3.setObjectName("groupBox_3")
@@ -277,6 +281,8 @@ class Ui_MainWindow(object):
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.actionNew_File.setText(_translate("MainWindow", "New File"))
 
+    def clicked(self):
+        print(EF_functions.Diesel_Pre_Euro_NOx_EF(0))
 
 if __name__ == "__main__":
     import sys
