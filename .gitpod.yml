@@ -8,7 +8,7 @@ ports:
   - port: 35900
     onOpen: ignore
 tasks:
-  - init: pip3 install pyqt5
+  - init: pip3 install -r requirements.txt
     command: clear && python3 pyEFT-UI.py
     name: Split terminal
   - openMode: split-right
