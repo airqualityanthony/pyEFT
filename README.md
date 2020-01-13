@@ -1,2 +1,3 @@
 # pyEFT
- Emission Factors Toolkit - Python Exectuable
+
+An attempt to make DEFRA Emission Factors Toolkit into a Python exectuable program. 
