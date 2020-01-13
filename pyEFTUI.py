@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'EFT-UI.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.2
-#
-# WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import pyEFT
@@ -27,43 +22,82 @@ class Ui_MainWindow(object):
         self.InputData_tab = QtWidgets.QWidget()
         self.InputData_tab.setObjectName("InputData_tab")
         self.Breakdown_by_vehicle_checkbox = QtWidgets.QCheckBox(self.InputData_tab)
-        self.Breakdown_by_vehicle_checkbox.setGeometry(QtCore.QRect(360, 30, 121, 17))
+        self.Breakdown_by_vehicle_checkbox.setGeometry(QtCore.QRect(420, 30, 121, 17))
         self.Breakdown_by_vehicle_checkbox.setObjectName("Breakdown_by_vehicle_checkbox")
         self.Source_apportionment_checkbox = QtWidgets.QCheckBox(self.InputData_tab)
-        self.Source_apportionment_checkbox.setGeometry(QtCore.QRect(360, 60, 141, 17))
+        self.Source_apportionment_checkbox.setGeometry(QtCore.QRect(420, 60, 141, 17))
         self.Source_apportionment_checkbox.setObjectName("Source_apportionment_checkbox")
         self.PM_by_source_checkbox = QtWidgets.QCheckBox(self.InputData_tab)
-        self.PM_by_source_checkbox.setGeometry(QtCore.QRect(360, 90, 111, 17))
+        self.PM_by_source_checkbox.setGeometry(QtCore.QRect(420, 90, 111, 17))
         self.PM_by_source_checkbox.setObjectName("PM_by_source_checkbox")
         self.NOx_checkbox = QtWidgets.QCheckBox(self.InputData_tab)
         self.NOx_checkbox.setGeometry(QtCore.QRect(30, 30, 70, 17))
         self.NOx_checkbox.setObjectName("NOx_checkbox")
         self.Emission_rates_checkbox = QtWidgets.QCheckBox(self.InputData_tab)
-        self.Emission_rates_checkbox.setGeometry(QtCore.QRect(220, 60, 121, 17))
+        self.Emission_rates_checkbox.setGeometry(QtCore.QRect(280, 60, 121, 17))
         self.Emission_rates_checkbox.setObjectName("Emission_rates_checkbox")
         self.PM25_checkbox = QtWidgets.QCheckBox(self.InputData_tab)
         self.PM25_checkbox.setGeometry(QtCore.QRect(120, 60, 70, 17))
         self.PM25_checkbox.setObjectName("PM25_checkbox")
+
+        # area selection
+        self.Area_dropdown = QtWidgets.QComboBox(self.InputData_tab)
+        self.Area_dropdown.setGeometry(QtCore.QRect(100, 110, 69, 22))
+        self.Area_dropdown.setObjectName("Area_dropdown")
+        # ..options..
+        self.Area_dropdown.addItem("England (not London")
+        self.Area_dropdown.addItem("London")
+        self.Area_dropdown.addItem("Northern Ireland")
+        self.Area_dropdown.addItem("Scotland")
+        self.Area_dropdown.addItem("Wales")
+        #resize dropdown
+        self.Area_dropdown.resize(self.Area_dropdown.sizeHint())
+        # pad to achieve centred look
+        self.Area_dropdown.setStyleSheet("QComboBox {""   padding-left: 20px;""}")
+
+        # year selection
         self.Year_dropdown = QtWidgets.QComboBox(self.InputData_tab)
         self.Year_dropdown.setGeometry(QtCore.QRect(100, 150, 69, 22))
         self.Year_dropdown.setObjectName("Year_dropdown")
+        # ..options..
+        # range of years
+        years = list(range(2017,2031))
+        # loop create year dropdown list
+        for i in years:
+            self.Year_dropdown.addItem(str(i))
+        # resize dropdown
+        self.Year_dropdown.resize(self.Year_dropdown.sizeHint())
+
+        # traffic format selection
+        self.Traffic_format_dropdown = QtWidgets.QComboBox(self.InputData_tab)
+        self.Traffic_format_dropdown.setGeometry(QtCore.QRect(100, 190, 69, 22))
+        self.Traffic_format_dropdown.setObjectName("Traffic_format_dropdown")
+        # ..options..
+        self.Traffic_format_dropdown.addItem("Basic Split")
+        self.Traffic_format_dropdown.addItem("Detailed Option 1")
+        self.Traffic_format_dropdown.addItem("Detailed Option 2")
+        self.Traffic_format_dropdown.addItem("Detailed Option 2")
+        self.Traffic_format_dropdown.addItem("Alternative Technologies")
+        # resize dropdown
+        self.Traffic_format_dropdown.resize(self.Traffic_format_dropdown.sizeHint())
+        self.Traffic_format_dropdown.setStyleSheet("QComboBox {""   padding-left: 20px;""}")
+
+
+
+
         self.CO2_checkbox = QtWidgets.QCheckBox(self.InputData_tab)
         self.CO2_checkbox.setGeometry(QtCore.QRect(120, 30, 70, 17))
         self.CO2_checkbox.setObjectName("CO2_checkbox")
         self.PM10_checkbox = QtWidgets.QCheckBox(self.InputData_tab)
         self.PM10_checkbox.setGeometry(QtCore.QRect(30, 60, 70, 17))
         self.PM10_checkbox.setObjectName("PM10_checkbox")
-        self.Traffic_format_dropdown = QtWidgets.QComboBox(self.InputData_tab)
-        self.Traffic_format_dropdown.setGeometry(QtCore.QRect(100, 190, 69, 22))
-        self.Traffic_format_dropdown.setObjectName("Traffic_format_dropdown")
-        self.Area_dropdown = QtWidgets.QComboBox(self.InputData_tab)
-        self.Area_dropdown.setGeometry(QtCore.QRect(100, 110, 69, 22))
-        self.Area_dropdown.setObjectName("Area_dropdown")
+
+
         self.Annual_link_emissions_checkbox = QtWidgets.QCheckBox(self.InputData_tab)
-        self.Annual_link_emissions_checkbox.setGeometry(QtCore.QRect(220, 90, 121, 17))
+        self.Annual_link_emissions_checkbox.setGeometry(QtCore.QRect(280, 90, 121, 17))
         self.Annual_link_emissions_checkbox.setObjectName("Annual_link_emissions_checkbox")
         self.AQ_modelling_checkbox = QtWidgets.QCheckBox(self.InputData_tab)
-        self.AQ_modelling_checkbox.setGeometry(QtCore.QRect(220, 30, 131, 17))
+        self.AQ_modelling_checkbox.setGeometry(QtCore.QRect(280, 30, 131, 17))
         self.AQ_modelling_checkbox.setObjectName("AQ_modelling_checkbox")
         self.label = QtWidgets.QLabel(self.InputData_tab)
         self.label.setGeometry(QtCore.QRect(30, 110, 31, 21))
@@ -75,10 +109,10 @@ class Ui_MainWindow(object):
         self.label_3.setGeometry(QtCore.QRect(10, 190, 81, 21))
         self.label_3.setObjectName("label_3")
         self.groupBox = QtWidgets.QGroupBox(self.InputData_tab)
-        self.groupBox.setGeometry(QtCore.QRect(210, 10, 141, 231))
+        self.groupBox.setGeometry(QtCore.QRect(280, 10, 141, 231))
         self.groupBox.setObjectName("groupBox")
         self.groupBox_2 = QtWidgets.QGroupBox(self.InputData_tab)
-        self.groupBox_2.setGeometry(QtCore.QRect(510, 10, 391, 231))
+        self.groupBox_2.setGeometry(QtCore.QRect(580, 10, 391, 231))
         self.groupBox_2.setObjectName("groupBox_2")
         self.NOX_annual_split_checkbox = QtWidgets.QCheckBox(self.groupBox_2)
         self.NOX_annual_split_checkbox.setGeometry(QtCore.QRect(190, 30, 181, 21))
@@ -113,7 +147,7 @@ class Ui_MainWindow(object):
         self.Run_button.clicked.connect(self.results_table)
 
         self.groupBox_3 = QtWidgets.QGroupBox(self.InputData_tab)
-        self.groupBox_3.setGeometry(QtCore.QRect(0, 10, 211, 231))
+        self.groupBox_3.setGeometry(QtCore.QRect(0, 10, 280, 231))
         self.groupBox_3.setObjectName("groupBox_3")
         self.Input_table_table = QtWidgets.QTableWidget(self.InputData_tab)
         self.Input_table_table.setGeometry(QtCore.QRect(20, 260, 1011, 421))
@@ -143,7 +177,7 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.Input_table_table.setItem(0, 0, item)
         self.groupBox_4 = QtWidgets.QGroupBox(self.InputData_tab)
-        self.groupBox_4.setGeometry(QtCore.QRect(350, 10, 161, 231))
+        self.groupBox_4.setGeometry(QtCore.QRect(420, 10, 161, 231))
         self.groupBox_4.setObjectName("groupBox_4")
         self.groupBox_4.raise_()
         self.groupBox_3.raise_()
@@ -201,7 +235,9 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.Tab_main.setCurrentIndex(3)
+
+        #set default tab
+        self.Tab_main.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -267,7 +303,7 @@ class Ui_MainWindow(object):
         self.menuWindow.setTitle(_translate("MainWindow", "Window"))
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.actionNew_File.setText(_translate("MainWindow", "New File"))
-    
+
     ## create table and set cell items to function results. 
     def results_table(self):
         self.tableWidget = QtWidgets.QTableWidget(self.tab_4)
