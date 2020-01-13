@@ -110,7 +110,7 @@ class Ui_MainWindow(object):
         self.Run_button = QtWidgets.QPushButton(self.groupBox_2)
         self.Run_button.setGeometry(QtCore.QRect(110, 180, 75, 23))
         self.Run_button.setObjectName("Run_button")
-        self.Run_button.clicked.connect(self.clicked)
+        self.Run_button.clicked.connect(self.results_table)
 
         self.groupBox_3 = QtWidgets.QGroupBox(self.InputData_tab)
         self.groupBox_3.setGeometry(QtCore.QRect(0, 10, 211, 231))
@@ -171,16 +171,7 @@ class Ui_MainWindow(object):
         self.tab_3.setObjectName("tab_3")
         self.Tab_main.addTab(self.tab_3, "")
         self.tab_4 = QtWidgets.QWidget()
-        self.tab_4.setObjectName("tab_4")
-        self.Output_table = QtWidgets.QTableWidget(self.tab_4)
-        self.Output_table.setGeometry(QtCore.QRect(50, 70, 651, 451))
-        self.Output_table.setRowCount(10)
-        self.Output_table.setColumnCount(4)
-        self.Output_table.setObjectName("Output_table")
-        item = QtWidgets.QTableWidgetItem()
-        self.Output_table.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.Output_table.setHorizontalHeaderItem(1, item)
+        self.tab_4.setObjectName("Output_tab")
         self.Tab_main.addTab(self.tab_4, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -269,10 +260,6 @@ class Ui_MainWindow(object):
         self.groupBox_4.setTitle(_translate("MainWindow", "Additional Outputs"))
         self.Tab_main.setTabText(self.Tab_main.indexOf(self.InputData_tab), _translate("MainWindow", "Input Data"))
         self.Tab_main.setTabText(self.Tab_main.indexOf(self.tab_3), _translate("MainWindow", "Page"))
-        item = self.Output_table.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "New Column"))
-        item = self.Output_table.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "Ouput EF"))
         self.Tab_main.setTabText(self.Tab_main.indexOf(self.tab_4), _translate("MainWindow", "Output"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuEdit.setTitle(_translate("MainWindow", "Edit"))
@@ -280,9 +267,17 @@ class Ui_MainWindow(object):
         self.menuWindow.setTitle(_translate("MainWindow", "Window"))
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.actionNew_File.setText(_translate("MainWindow", "New File"))
-
-    def clicked(self):
-        print(EF_functions.Diesel_Pre_Euro_NOx_EF(0))
+    
+    ## create table and set cell items to function results. 
+    def results_table(self):
+        self.tableWidget = QtWidgets.QTableWidget(self.tab_4)
+        # set row count
+        self.tableWidget.setRowCount(4)
+        # set column count
+        self.tableWidget.setColumnCount(2)
+        #To add individual cells:
+        self.tableWidget.setItem(0,0, QtWidgets.QTableWidgetItem(EF_functions.Diesel_Pre_Euro_NOx_EF(0)))
+        #self.Output_table.setItem(1,2, QtWidgets.QTableWidgetItem(EF_functions.Diesel_Pre_Euro_NOx_EF(0)))
 
 if __name__ == "__main__":
     import sys
