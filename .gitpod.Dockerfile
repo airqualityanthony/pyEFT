@@ -8,6 +8,6 @@ USER root
 # RUN sudo apt-get -q update && #     sudo apt-get install -yq bastet && #     sudo rm -rf /var/lib/apt/lists/*
 #
 # More information: https://www.gitpod.io/docs/42_config_docker/
-RUN sudo apt-get -q update && sudo apt-get install -y python3-pyqt5 && sudo apt-get install -y python3-pandas
+RUN sudo apt-get -q update && sudo apt-get install -y python-pyqt5 && sudo apt-get install -y python-pandas && sudo apt-get install -y python-xlrd
 
 USER root
