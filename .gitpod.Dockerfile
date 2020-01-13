@@ -1,6 +1,6 @@
 FROM gitpod/workspace-full-vnc
                     
-USER gitpod
+USER root
 
 # Install custom tools, runtime, etc. using apt-get
 # For example, the command below would install "bastet" - a command line tetris clone:
@@ -9,3 +9,9 @@ USER gitpod
 #
 # More information: https://www.gitpod.io/docs/42_config_docker/
 RUN sudo apt-get -q update && sudo apt-get install -y python3-pyqt5
+
+USER gitpod
+
+ENV ...
+
+USER root
