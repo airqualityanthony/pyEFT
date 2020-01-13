@@ -1,3 +1,4 @@
 pandas
 pyqt5
 xlrd
+pyinstaller
