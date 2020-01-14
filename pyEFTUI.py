@@ -297,6 +297,8 @@ class Ui_MainWindow(object):
         self.Tab_main.setTabText(self.Tab_main.indexOf(self.InputData_tab), _translate("MainWindow", "Input Data"))
         self.Tab_main.setTabText(self.Tab_main.indexOf(self.tab_3), _translate("MainWindow", "Page"))
         self.Tab_main.setTabText(self.Tab_main.indexOf(self.tab_4), _translate("MainWindow", "Output"))
+        # Tab shape to rounded (triangular is 1)
+        self.Tab_main.setTabShape(0)
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuEdit.setTitle(_translate("MainWindow", "Edit"))
         self.menuView.setTitle(_translate("MainWindow", "View"))
@@ -318,6 +320,7 @@ class Ui_MainWindow(object):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
+    app.setStyle("Fusion")
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
