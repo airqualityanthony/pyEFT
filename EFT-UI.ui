@@ -17,14 +17,14 @@
    <widget class="QTabWidget" name="Tab_main">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
+      <x>20</x>
+      <y>0</y>
       <width>1091</width>
       <height>721</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="QA_tab">
      <attribute name="title">
@@ -35,45 +35,6 @@
      <attribute name="title">
       <string>Input Data</string>
      </attribute>
-     <widget class="QCheckBox" name="Breakdown_by_vehicle_checkbox">
-      <property name="geometry">
-       <rect>
-        <x>360</x>
-        <y>30</y>
-        <width>121</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Breakdown by Vehicle</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="Source_apportionment_checkbox">
-      <property name="geometry">
-       <rect>
-        <x>360</x>
-        <y>60</y>
-        <width>141</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Source Apportionment</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="PM_by_source_checkbox">
-      <property name="geometry">
-       <rect>
-        <x>360</x>
-        <y>90</y>
-        <width>111</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>PM by Source</string>
-      </property>
-     </widget>
      <widget class="QCheckBox" name="NOx_checkbox">
       <property name="geometry">
        <rect>
@@ -87,19 +48,6 @@
        <string>NOx</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="Emission_rates_checkbox">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>60</y>
-        <width>121</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Emission Rates</string>
-      </property>
-     </widget>
      <widget class="QCheckBox" name="PM25_checkbox">
       <property name="geometry">
        <rect>
@@ -111,16 +59,6 @@
       </property>
       <property name="text">
        <string>PM2.5</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="Year_dropdown">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>150</y>
-        <width>69</width>
-        <height>22</height>
-       </rect>
       </property>
      </widget>
      <widget class="QCheckBox" name="CO2_checkbox">
@@ -149,51 +87,40 @@
        <string>PM10</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="Traffic_format_dropdown">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>190</y>
-        <width>69</width>
-        <height>22</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QComboBox" name="Area_dropdown">
       <property name="geometry">
        <rect>
         <x>100</x>
         <y>110</y>
-        <width>69</width>
+        <width>261</width>
         <height>22</height>
        </rect>
       </property>
-     </widget>
-     <widget class="QCheckBox" name="Annual_link_emissions_checkbox">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>90</y>
-        <width>121</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Annual Link Emissions</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="AQ_modelling_checkbox">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>30</y>
-        <width>131</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Air Quality Modelling</string>
-      </property>
+      <item>
+       <property name="text">
+        <string>England (not London)</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>London</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Northern Ireland</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Scotland</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Wales</string>
+       </property>
+      </item>
      </widget>
      <widget class="QLabel" name="label">
       <property name="geometry">
@@ -208,49 +135,62 @@
        <string>Area</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_2">
+     <widget class="QGroupBox" name="Select_outputs_groupbox">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>150</y>
-        <width>21</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Year</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>190</y>
-        <width>81</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Traffic Format</string>
-      </property>
-     </widget>
-     <widget class="QGroupBox" name="groupBox">
-      <property name="geometry">
-       <rect>
-        <x>210</x>
+        <x>370</x>
         <y>10</y>
-        <width>141</width>
+        <width>151</width>
         <height>231</height>
        </rect>
       </property>
       <property name="title">
        <string>Select Outputs</string>
       </property>
+      <widget class="QCheckBox" name="AQ_modelling_checkbox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>131</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Air Quality Modelling</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="Emission_rates_checkbox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>121</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Emission Rates</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="Annual_link_emissions_checkbox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>121</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Annual Link Emissions</string>
+       </property>
+      </widget>
      </widget>
-     <widget class="QGroupBox" name="groupBox_2">
+     <widget class="QGroupBox" name="Advanced_options_groupbox">
       <property name="geometry">
        <rect>
-        <x>510</x>
+        <x>680</x>
         <y>10</y>
         <width>391</width>
         <height>231</height>
@@ -390,25 +330,184 @@
        </property>
       </widget>
      </widget>
-     <widget class="QGroupBox" name="groupBox_3">
+     <widget class="QGroupBox" name="Select_pollutants_groupbox">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>10</y>
-        <width>211</width>
+        <width>371</width>
         <height>231</height>
        </rect>
       </property>
       <property name="title">
        <string>Select Pollutants</string>
       </property>
+      <widget class="QComboBox" name="Year_dropdown">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>130</y>
+         <width>261</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>2017</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2018</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2019</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2020</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2021</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2022</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2023</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2024</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2025</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2026</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2027</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2028</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2029</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2030</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>160</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Traffic Format</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="Traffic_format_dropdown">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>160</y>
+         <width>261</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Basic Split</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Detailed Option 1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Detailed Option 2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Detailed Option 3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Alternative Technologies</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>130</y>
+         <width>21</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Year</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="Dropdown_instructions">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>200</y>
+         <width>361</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Select 'Basic Split' or 'Detailed Option 1 to 3' or 'Alternative Technologies' </string>
+       </property>
+      </widget>
+      <zorder>Dropdown_instructions</zorder>
+      <zorder>Year_dropdown</zorder>
+      <zorder>label_3</zorder>
+      <zorder>Traffic_format_dropdown</zorder>
+      <zorder>label_2</zorder>
      </widget>
      <widget class="QTableWidget" name="Input_table_table">
       <property name="geometry">
        <rect>
         <x>20</x>
         <y>260</y>
-        <width>1011</width>
+        <width>1051</width>
         <height>421</height>
        </rect>
       </property>
@@ -524,11 +623,16 @@
         <string/>
        </property>
       </item>
+      <item row="1" column="9">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
      </widget>
-     <widget class="QGroupBox" name="groupBox_4">
+     <widget class="QGroupBox" name="Additional_Outputs_groupbox">
       <property name="geometry">
        <rect>
-        <x>350</x>
+        <x>520</x>
         <y>10</y>
         <width>161</width>
         <height>231</height>
@@ -537,76 +641,70 @@
       <property name="title">
        <string>Additional Outputs</string>
       </property>
+      <widget class="QCheckBox" name="Breakdown_by_vehicle_checkbox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>121</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Breakdown by Vehicle</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="Source_apportionment_checkbox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>141</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Source Apportionment</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="PM_by_source_checkbox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>111</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PM by Source</string>
+       </property>
+      </widget>
      </widget>
-     <zorder>groupBox_4</zorder>
-     <zorder>groupBox_3</zorder>
-     <zorder>groupBox</zorder>
-     <zorder>groupBox_2</zorder>
-     <zorder>Breakdown_by_vehicle_checkbox</zorder>
-     <zorder>Source_apportionment_checkbox</zorder>
-     <zorder>PM_by_source_checkbox</zorder>
+     <zorder>Additional_Outputs_groupbox</zorder>
+     <zorder>Select_pollutants_groupbox</zorder>
+     <zorder>Select_outputs_groupbox</zorder>
+     <zorder>Advanced_options_groupbox</zorder>
      <zorder>NOx_checkbox</zorder>
-     <zorder>Emission_rates_checkbox</zorder>
      <zorder>PM25_checkbox</zorder>
-     <zorder>Year_dropdown</zorder>
      <zorder>CO2_checkbox</zorder>
      <zorder>PM10_checkbox</zorder>
-     <zorder>Traffic_format_dropdown</zorder>
      <zorder>Area_dropdown</zorder>
-     <zorder>Annual_link_emissions_checkbox</zorder>
-     <zorder>AQ_modelling_checkbox</zorder>
      <zorder>label</zorder>
-     <zorder>label_2</zorder>
-     <zorder>label_3</zorder>
      <zorder>Input_table_table</zorder>
     </widget>
-    <widget class="QWidget" name="tab_3">
+    <widget class="QWidget" name="Popup_tab">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <attribute name="title">
       <string>Page</string>
      </attribute>
     </widget>
-    <widget class="QWidget" name="tab_4">
+    <widget class="QWidget" name="Output_tab">
      <attribute name="title">
       <string>Output</string>
      </attribute>
-     <widget class="QTableWidget" name="Output_table">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>70</y>
-        <width>651</width>
-        <height>451</height>
-       </rect>
-      </property>
-      <property name="rowCount">
-       <number>10</number>
-      </property>
-      <property name="columnCount">
-       <number>4</number>
-      </property>
-      <row/>
-      <row/>
-      <row/>
-      <row/>
-      <row/>
-      <row/>
-      <row/>
-      <row/>
-      <row/>
-      <row/>
-      <column>
-       <property name="text">
-        <string>New Column</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Ouput EF</string>
-       </property>
-      </column>
-      <column/>
-      <column/>
-     </widget>
     </widget>
    </widget>
   </widget>
