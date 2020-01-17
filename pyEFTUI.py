@@ -9,7 +9,9 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import pyEFT
-from pyEFT import EF_functions
+from pyEFT import Car_EF_functions
+from pyEFT import Speed_function
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -82,10 +84,14 @@ class Ui_MainWindow(object):
         self.Clear_button = QtWidgets.QPushButton(self.Advanced_options_groupbox)
         self.Clear_button.setGeometry(QtCore.QRect(210, 180, 75, 23))
         self.Clear_button.setObjectName("Clear_button")
+        
+
         self.Run_button = QtWidgets.QPushButton(self.Advanced_options_groupbox)
         self.Run_button.setGeometry(QtCore.QRect(110, 180, 75, 23))
         self.Run_button.setObjectName("Run_button")
         self.Run_button.clicked.connect(self.results_table)
+
+
         self.Select_pollutants_groupbox = QtWidgets.QGroupBox(self.InputData_tab)
         self.Select_pollutants_groupbox.setGeometry(QtCore.QRect(0, 10, 371, 231))
         self.Select_pollutants_groupbox.setObjectName("Select_pollutants_groupbox")
@@ -313,19 +319,20 @@ class Ui_MainWindow(object):
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.actionNew_File.setText(_translate("MainWindow", "New File"))
 
-
         # Tab shape to rounded (triangular is 1)
         self.Tab_main.setTabShape(0)
     ## create table and set cell items to function results. 
+    
     def results_table(self):
         self.tableWidget = QtWidgets.QTableWidget(self.Output_tab)
         # set row count
         self.tableWidget.setRowCount(4)
         # set column count
         self.tableWidget.setColumnCount(2)
+        AVG_SPEED = int(self.Input_table_table.item(0,4).text())
         #To add individual cells:
-        self.tableWidget.setItem(0,0, QtWidgets.QTableWidgetItem(EF_functions.Diesel_Pre_Euro_NOx_EF(0)))
-        #self.Output_table.setItem(1,2, QtWidgets.QTableWidgetItem(EF_functions.Diesel_Pre_Euro_NOx_EF(0)))
+        self.tableWidget.setItem(0,0, QtWidgets.QTableWidgetItem(Car_EF_functions.Diesel_Pre_Euro_NOx_EF(0)))
+
 
 if __name__ == "__main__":
     import sys

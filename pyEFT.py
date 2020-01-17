@@ -3,7 +3,10 @@ import numpy as np
 import xlrd
 import math
 
-noxef = pd.read_excel("Copert5_NOx_EFs_Trimmed.xls", sheet_name = "Cars")
+noxef_cars = pd.read_excel("rtp_Copert5_NOxEFs_final_trimmed.xlsx", sheet_name = "Cars")
+noxef_lgv = pd.read_excel("rtp_Copert5_NOxEFs_final_trimmed.xlsx", sheet_name = "LGVs")
+noxef_hgv = pd.read_excel("rtp_Copert5_NOxEFs_final_trimmed.xlsx", sheet_name = "HGVs & Buses")
+noxef_mbike = pd.read_excel("rtp_Copert5_NOxEFs_final_trimmed.xlsx", sheet_name = "Motorcycles")
 
 #print("Column headings:")
 #print(noxef.columns)
@@ -31,30 +34,39 @@ noxef = pd.read_excel("Copert5_NOx_EFs_Trimmed.xls", sheet_name = "Cars")
 
 # Diesel: Euro 6_1,6_2,6_3 EF
 # =(D15*O15^2+E15*O15+F15+G15/O15)/(H15*O15^2+I15*O15+J15)*(1-L15)
-
 AVG_SPEED = 30
 
-class EF_functions:
-	def Diesel_Pre_Euro_NOx_EF(row): 
-		EF = ((noxef.loc[row,'ALPHA'] * (AVG_SPEED ** 2)) + (noxef.loc[row,'BETA'] * AVG_SPEED) + noxef.loc[row,'GAMMA'] + (noxef.loc[row,'DELTA'] * math.log(AVG_SPEED)) + (noxef.loc[row,'EPSILON'] * math.exp(noxef.loc[row,'ZITA'] * AVG_SPEED)) + (noxef.loc[row,'ITA'] * (AVG_SPEED ** noxef.loc[row,'THITA']))) * (1 - noxef.loc[row,'RF'])
-		return(str(EF))
+class Speed_function:
+    def Speed(row):
+	    if noxef_cars.loc[row,'Min speed (km/h)'] > AVG_SPEED:
+	        SPEED = noxef_cars.loc[row,'Min speed (km/h)']
+	    elif noxef_cars.loc[row,'Max speed (km/h)'] < AVG_SPEED:
+	        SPEED = noxef_cars.loc[row,'Max speed (km/h)']
+	    else: 
+	        SPEED = AVG_SPEED
+	    return(SPEED)
 
-	def Diesel_Euro_1_to_5_NOx_EF(row):
-		EF = ((noxef.loc[row,'ALPHA'] + noxef.loc[row,'GAMMA'] * AVG_SPEED + noxef.loc[row,'EPSILON'] * AVG_SPEED  ** 2 + noxef.loc[row,'ZITA'] / AVG_SPEED ) / (1 + noxef.loc[row,'BETA'] * AVG_SPEED + noxef.loc[row,'DELTA'] * AVG_SPEED ** 2)) * (1 - noxef.loc[row,'RF'])
-		print(EF)
+class Car_EF_functions:
+    def Diesel_Pre_Euro_NOx_EF(row): 
+        EF = ((noxef_cars.loc[row,'ALPHA'] * (Speed_function.Speed(row) ** 2)) + (noxef_cars.loc[row,'BETA'] * Speed_function.Speed(row)) + noxef_cars.loc[row,'GAMMA'] + (noxef_cars.loc[row,'DELTA'] * math.log(Speed_function.Speed(row))) + (noxef_cars.loc[row,'EPSILON'] * math.exp(noxef_cars.loc[row,'ZITA'] * Speed_function.Speed(row))) + (noxef_cars.loc[row,'ITA'] * (Speed_function.Speed(row) ** noxef_cars.loc[row,'THITA']))) * (1 - noxef_cars.loc[row,'RF'])
+        return(str(EF))
 
-	def Diesel_Euro_6_NOx_EF(row):
-		EF =(noxef.loc[row,'ALPHA']*AVG_SPEED**2+noxef.loc[row,'BETA']*AVG_SPEED+noxef.loc[row,'GAMMA']+noxef.loc[row,'DELTA']/AVG_SPEED)/(noxef.loc[row,'EPSILON']*AVG_SPEED**2+noxef.loc[row,'ZITA']*AVG_SPEED+noxef.loc[row,'ITA'])*(1-noxef.loc[row,'RF'])
-		print(EF)
+    def Diesel_Euro_1_to_5_NOx_EF(row):
+        EF = ((noxef_cars.loc[row,'ALPHA'] + noxef_cars.loc[row,'GAMMA'] * AVG_SPEED + noxef_cars.loc[row,'EPSILON'] * AVG_SPEED  ** 2 + noxef_cars.loc[row,'ZITA'] / AVG_SPEED ) / (1 + noxef_cars.loc[row,'BETA'] * AVG_SPEED + noxef_cars.loc[row,'DELTA'] * AVG_SPEED ** 2)) * (1 - noxef_cars.loc[row,'RF'])
+        return(str(EF))
 
-	def Petrol_Pre_Euro_NOx_EF(row):
-		EF = ((noxef.loc[row,'ALPHA'] * (AVG_SPEED ** 2)) + (noxef.loc[row,'BETA'] * AVG_SPEED) + noxef.loc[row,'GAMMA'] + (noxef.loc[row,'DELTA'] * math.log(AVG_SPEED)) + (noxef.loc[row,'EPSILON'] * math.exp(noxef.loc[row,'ZITA'] * AVG_SPEED)) + (noxef.loc[row,'ITA'] * (AVG_SPEED ** noxef.loc[row,'THITA']))) * (1 - noxef.loc[row,'RF'])
-		print(EF)
+    def Diesel_Euro_6_NOx_EF(row):
+        EF =(noxef_cars.loc[row,'ALPHA']*AVG_SPEED**2+noxef_cars.loc[row,'BETA']*AVG_SPEED+noxef_cars.loc[row,'GAMMA']+noxef_cars.loc[row,'DELTA']/AVG_SPEED)/(noxef_cars.loc[row,'EPSILON']*AVG_SPEED**2+noxef_cars.loc[row,'ZITA']*AVG_SPEED+noxef_cars.loc[row,'ITA'])*(1-noxef_cars.loc[row,'RF'])
+        return(str(EF))
 
-	def Petrol_Euro_1_to_6_NOx_EF(row):
-		EF = ((noxef.loc[row,'ALPHA'] + noxef.loc[row,'GAMMA'] * AVG_SPEED + noxef.loc[row,'EPSILON'] * AVG_SPEED  ** 2 + noxef.loc[row,'ZITA'] / AVG_SPEED ) / (1 + noxef.loc[row,'BETA'] * AVG_SPEED + noxef.loc[row,'DELTA'] * AVG_SPEED ** 2)) * (1 - noxef.loc[row,'RF'])
-		print(EF)
+    def Petrol_Pre_Euro_NOx_EF(row):
+        EF = ((noxef_cars.loc[row,'ALPHA'] * (AVG_SPEED ** 2)) + (noxef_cars.loc[row,'BETA'] * AVG_SPEED) + noxef_cars.loc[row,'GAMMA'] + (noxef_cars.loc[row,'DELTA'] * math.log(AVG_SPEED)) + (noxef_cars.loc[row,'EPSILON'] * math.exp(noxef_cars.loc[row,'ZITA'] * AVG_SPEED)) + (noxef_cars.loc[row,'ITA'] * (AVG_SPEED ** noxef_cars.loc[row,'THITA']))) * (1 - noxef_cars.loc[row,'RF'])
+        return(str(EF))
 
+    def Petrol_Euro_1_to_6_NOx_EF(row):
+        EF = ((noxef_cars.loc[row,'ALPHA'] + noxef_cars.loc[row,'GAMMA'] * AVG_SPEED + noxef_cars.loc[row,'EPSILON'] * AVG_SPEED  ** 2 + noxef_cars.loc[row,'ZITA'] / AVG_SPEED ) / (1 + noxef_cars.loc[row,'BETA'] * AVG_SPEED + noxef_cars.loc[row,'DELTA'] * AVG_SPEED ** 2)) * (1 - noxef_cars.loc[row,'RF'])
+        return(str(EF))
+        
 ### work on conditional location of row to feed into functon:
 ## next step: make variables for input and get function to run based on row back from conditional
 
@@ -65,4 +77,3 @@ class EF_functions:
 # for i in range(0,len(noxef)):
 # 	if (noxef.loc[i,'Euro standard'] == y) and (x in noxef.loc[i,'Fuel / Size']): 
 # 		Diesel_Pre_Euro_NOx_EF(i) 
-

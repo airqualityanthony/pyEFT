@@ -4,7 +4,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import pyEFT
-from pyEFT import EF_functions
+from pyEFT import Car_EF_functions
 
 
 class Ui_MainWindow(object):
