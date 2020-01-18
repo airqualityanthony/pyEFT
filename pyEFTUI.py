@@ -8,9 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import pyEFT
-from pyEFT import Car_EF_functions
-from pyEFT import Speed_function
+from EFT_utils import EF_functions, read_input_files, speed
 
 
 class Ui_MainWindow(object):
@@ -329,9 +327,8 @@ class Ui_MainWindow(object):
         self.tableWidget.setRowCount(4)
         # set column count
         self.tableWidget.setColumnCount(2)
-        AVG_SPEED = int(self.Input_table_table.item(0,4).text())
         #To add individual cells:
-        self.tableWidget.setItem(0,0, QtWidgets.QTableWidgetItem(Car_EF_functions.Diesel_Pre_Euro_NOx_EF(0)))
+        self.tableWidget.setItem(0,0, QtWidgets.QTableWidgetItem(EF_functions.Car_EF_functions.Diesel_Pre_Euro_NOx_EF(int(self.Input_table_table.item(0,4).text()),0)))
 
 
 if __name__ == "__main__":
